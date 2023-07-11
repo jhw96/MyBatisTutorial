@@ -13,4 +13,6 @@ public interface BookDAO{
 	public Book getBookById(int num);
 	
 	public void insertBook(Book book);
+	
+	public void updateBookById(Book book);
 }

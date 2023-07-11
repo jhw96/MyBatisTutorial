@@ -34,12 +34,29 @@ public class BookController {
 
 	// 책 만들기
 	@PostMapping("/insertBook")
-	public Book insertBookd(@RequestParam Map<String, String> paramMap) {
+	public Book insertBook(@RequestParam Map<String, String> paramMap) {
 		
 		firstService.insertBook(paramMap);
 		Book book = firstService.getBookById(Integer.parseInt(paramMap.get("num")));
 
 		return book;
+	}
+	
+	// 책 수정
+	@PostMapping("/updateBookById")
+	public Book updateBookById(@RequestParam Map<String, String> paramMap) {
+		int num = Integer.parseInt(paramMap.get("num"));
+		
+		Book before = firstService.getBookById(num);
+		System.out.println("before : " + before);
+		
+		firstService.updateBookById(paramMap);
+		
+		Book after = firstService.getBookById(num);
+		System.out.println("after : " + after);
+		
+		
+		return after;
 	}
 
 }

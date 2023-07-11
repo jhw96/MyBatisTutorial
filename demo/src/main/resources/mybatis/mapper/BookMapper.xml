@@ -46,5 +46,19 @@
 		WHERE 1=1
 		AND num = #{num}
 	</select>
-
+	
+	
+	<!-- 책 정보 수정하기 -->
+	<update id="updateBookById" parameterType="com.example.demo.main.dto.Book">
+		UPDATE book
+		SET detail = #{detail}
+		<if test='title != null and title neq ""'>
+		,title= #{title}
+		</if>
+		<if test='author != null and author neq ""' >
+		,author = #{author}
+		</if>
+		WHERE 1=1
+		AND num = #{num}
+	</update>
 </mapper>

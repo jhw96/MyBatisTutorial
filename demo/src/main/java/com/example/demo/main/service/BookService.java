@@ -44,6 +44,24 @@ public class BookService {
 		firstDAO.insertBook(book);
 	}
 	
+	
+	// 책 업데이트
+	public void updateBookById(Map<String,String> paramMap) {
+		int num = Integer.parseInt(paramMap.get("num"));
+		String title = paramMap.get("title");
+		String author = paramMap.get("author");
+		String detail = paramMap.get("detail");
+		
+		Book book = new Book();
+		book.setNum(num);
+		book.setTitle(title);
+		book.setAuthor(author);
+		book.setDetail(detail);
+		
+		firstDAO.updateBookById(book);
+	}
+	
+	// 책 하나 조회
 	public Book getBookById(int num) {
 		return firstDAO.getBookById(num);
 	}
