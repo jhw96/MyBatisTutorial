@@ -16,7 +16,7 @@ import com.example.demo.main.service.BookService;
 public class BookController {
 
 	@Autowired
-	BookService firstService;
+	BookService bookService;
 
 	@GetMapping("/test")
 	public String test() {
@@ -29,34 +29,45 @@ public class BookController {
 	@GetMapping("/bookList")
 	public ArrayList<Book> bookList() {
 
-		return firstService.bookList();
+		return bookService.bookList();
 	}
 
 	// 책 만들기
 	@PostMapping("/insertBook")
 	public Book insertBook(@RequestParam Map<String, String> paramMap) {
-		
-		firstService.insertBook(paramMap);
-		Book book = firstService.getBookById(Integer.parseInt(paramMap.get("num")));
+
+		bookService.insertBook(paramMap);
+		Book book = bookService.getBookById(Integer.parseInt(paramMap.get("num")));
 
 		return book;
 	}
-	
+
 	// 책 수정
 	@PostMapping("/updateBookById")
 	public Book updateBookById(@RequestParam Map<String, String> paramMap) {
 		int num = Integer.parseInt(paramMap.get("num"));
-		
-		Book before = firstService.getBookById(num);
+
+		Book before = bookService.getBookById(num);
 		System.out.println("before : " + before);
-		
-		firstService.updateBookById(paramMap);
-		
-		Book after = firstService.getBookById(num);
+
+		bookService.updateBookById(paramMap);
+
+		Book after = bookService.getBookById(num);
 		System.out.println("after : " + after);
-		
-		
+
 		return after;
+	}
+
+	// 책 삭제
+	@PostMapping("/deleteBookById")
+	public int deleteBookById(@RequestParam Map<String, String> paramMap) {
+		int num = Integer.parseInt(paramMap.get("num"));
+		
+		bookService.deleteBookById(num);
+		
+		System.out.println(num + " 삭제완료");
+		
+		return num;
 	}
 
 }

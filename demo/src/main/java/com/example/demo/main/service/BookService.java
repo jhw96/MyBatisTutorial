@@ -13,12 +13,12 @@ import com.example.demo.main.dto.Book;
 public class BookService {
 	
 	@Autowired(required=true)
-	private BookDAO firstDAO;
+	private BookDAO bookDAO;
 	
 	
 	// 책 리스트
 	public ArrayList<Book> bookList() {
-		ArrayList<Book> bookList = firstDAO.bookList();
+		ArrayList<Book> bookList = bookDAO.bookList();
 		
 		for(int i=0; i<bookList.size(); i++)
 			System.out.println(bookList.get(i));
@@ -41,7 +41,7 @@ public class BookService {
 		book.setAuthor(author);
 		book.setDetail(detail);
 		
-		firstDAO.insertBook(book);
+		bookDAO.insertBook(book);
 	}
 	
 	
@@ -58,12 +58,19 @@ public class BookService {
 		book.setAuthor(author);
 		book.setDetail(detail);
 		
-		firstDAO.updateBookById(book);
+		bookDAO.updateBookById(book);
 	}
 	
 	// 책 하나 조회
 	public Book getBookById(int num) {
-		return firstDAO.getBookById(num);
+		return bookDAO.getBookById(num);
+	}
+	
+	
+	// 책 삭제
+	public void deleteBookById(int num) {
+		// TODO: 접속한 사람의 세션 정보를 받아서 로그 남기기 
+		bookDAO.deleteBookById(num);
 	}
 	
 

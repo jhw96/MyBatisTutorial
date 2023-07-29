@@ -15,4 +15,6 @@ public interface BookDAO{
 	public void insertBook(Book book);
 	
 	public void updateBookById(Book book);
+	
+	public void deleteBookById(int num);
 }

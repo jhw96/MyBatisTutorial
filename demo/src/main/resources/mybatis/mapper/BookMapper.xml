@@ -61,4 +61,12 @@
 		WHERE 1=1
 		AND num = #{num}
 	</update>
+	
+	<!-- 책 삭제하기 -->
+	<delete id="deleteBookById" parameterType="Integer">
+		DELETE
+		FROM book
+		WHERE 1=1
+		AND num = #{num}
+	</delete>
 </mapper>
