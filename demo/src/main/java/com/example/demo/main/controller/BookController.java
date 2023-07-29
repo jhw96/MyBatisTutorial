@@ -18,12 +18,6 @@ public class BookController {
 	@Autowired
 	BookService bookService;
 
-	@GetMapping("/test")
-	public String test() {
-		System.out.println("test");
-
-		return "Hello World!";
-	}
 
 	// 책 리스트
 	@GetMapping("/bookList")
